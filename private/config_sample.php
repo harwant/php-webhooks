@@ -1,10 +1,12 @@
 <?php
 
 // Configuration file for webhook handler
+// Copy this file to config.php and add your actual settings
 
 // Map Bearer tokens to allowed actions
+// IMPORTANT: Replace with your actual bearer tokens and actions
 $tokenActions = [
-    'cusg-Z4cF9vLMvf7SRPZ1T90rhlUucCIdSJHfGdjtOW2VPiAXEXtcVXyT7uV0WBqJClyB' => ['dbdump', 'qa'], // Example
+    'your-secret-bearer-token-here' => ['action1', 'action2'],
 ];
 
 // Log file path
