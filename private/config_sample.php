@@ -29,4 +29,7 @@ $db_qa = [
     'db_password' => 'your-qa-password',
 ];
 
+// Database dump directory
+$dumpDir = __DIR__ . '/dumps';
+
 ?>
