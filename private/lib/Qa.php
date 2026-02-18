@@ -1,10 +1,11 @@
 <?php
 
 class Qa {
-    public function serve($payload) {
+    public function serve($payload, $logFilePath) {
         // Process qa action
-        // Example: Log the payload or perform QA operations
-        error_log('Qa action processed with payload: ' . json_encode($payload));
+        // Log the payload to the webhook log file
+        $logEntry = date('Y-m-d H:i:s') . ' - Action: qa - Payload: ' . json_encode($payload) . PHP_EOL;
+        file_put_contents($logFilePath, $logEntry, FILE_APPEND);
     }
 }
 

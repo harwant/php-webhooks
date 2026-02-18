@@ -44,7 +44,7 @@ if (!$action || !in_array($action, $tokenActions[$providedToken])) {
 $className = ucfirst($action);
 require_once $libPath . $className . '.php';
 $handler = new $className();
-$handler->serve($data);
+$handler->serve($data, $logFilePath);
 
 // Respond with success
 echo json_encode(['status' => 'success', 'message' => 'Webhook processed', 'action' => $action]);
