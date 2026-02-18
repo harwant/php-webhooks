@@ -15,4 +15,18 @@ $logFilePath = __DIR__ . '/logs/webhook_log.txt';
 // Lib directory path
 $libPath = __DIR__ . '/lib/';
 
+// Database configuration - Production
+$db_production = [
+    'db_host' => 'your-production-host',
+    'db_user' => 'your-production-user',
+    'db_password' => 'your-production-password',
+];
+
+// Database configuration - QA
+$db_qa = [
+    'db_host' => 'your-qa-host',
+    'db_user' => 'your-qa-user',
+    'db_password' => 'your-qa-password',
+];
+
 ?>

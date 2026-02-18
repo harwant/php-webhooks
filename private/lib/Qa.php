@@ -1,11 +1,14 @@
 <?php
 
-class Qa {
-    public function serve($payload, $logFilePath) {
+require_once 'ActionHandler.php';
+
+class Qa extends ActionHandler {
+    public function serve($payload) {
         // Process qa action
-        // Log the payload to the webhook log file
-        $logEntry = date('Y-m-d H:i:s') . ' - Action: qa - Payload: ' . json_encode($payload) . PHP_EOL;
-        file_put_contents($logFilePath, $logEntry, FILE_APPEND);
+        $this->saveLog('qa', $payload);
+        
+        // Access config settings if needed
+        // $tokenActions = $this->getConfig('tokenActions');
     }
 }
 

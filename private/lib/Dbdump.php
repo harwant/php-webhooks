@@ -1,11 +1,14 @@
 <?php
 
-class Dbdump {
-    public function serve($payload, $logFilePath) {
+require_once 'ActionHandler.php';
+
+class Dbdump extends ActionHandler {
+    public function serve($payload) {
         // Process dbdump action
-        // Log the payload to the webhook log file
-        $logEntry = date('Y-m-d H:i:s') . ' - Action: dbdump - Payload: ' . json_encode($payload) . PHP_EOL;
-        file_put_contents($logFilePath, $logEntry, FILE_APPEND);
+        $this->saveLog('dbdump', $payload);
+        
+        // Access config settings if needed
+        // $tokenActions = $this->getConfig('tokenActions');
     }
 }
 
