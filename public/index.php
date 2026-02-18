@@ -1,11 +1,6 @@
 <?php
 
-// Configuration: Map Bearer tokens to allowed actions
-$tokenActions = [
-    'token1' => ['process_payment', 'update_inventory'],
-    'token2' => ['send_notification'],
-    'your-preset-bearer-token' => ['log_data', 'process_webhook'], // Example
-];
+require_once '../private/config.php';
 
 // Set response header
 header('Content-Type: application/json');
@@ -45,9 +40,11 @@ if (!$action || !in_array($action, $tokenActions[$providedToken])) {
     exit;
 }
 
-// Process the webhook data (example: log to file)
-$logEntry = date('Y-m-d H:i:s') . ' - Action: ' . $action . ' - Webhook received: ' . json_encode($data) . PHP_EOL;
-file_put_contents('webhook_log.txt', $logEntry, FILE_APPEND);
+// Load and instantiate the action class
+$className = ucfirst($action);
+require_once $libPath . $className . '.php';
+$handler = new $className();
+$handler->serve($data);
 
 // Respond with success
 echo json_encode(['status' => 'success', 'message' => 'Webhook processed', 'action' => $action]);
